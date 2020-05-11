@@ -1,2 +1,2 @@
 # GAppScriptsForEdu
-Google App Scripts
+Google App Scripts for Education
