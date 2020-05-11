@@ -1,0 +1,52 @@
+<script type="text/javascript">
+
+/* Közös: kliensoldali "hiba" felirat megjelenítése */
+function showMsg(msg) {
+  var msgBox = document.getElementById('msgBox');
+  msgBox.innerHTML = msg;
+}
+
+
+/*
+* kliensoldali hívás: szerveroldali függvény meghívása
+*/
+function changeDay(){
+  var day = document.getElementById("meetDay").value;
+  updateMeetBox("A " + day + " nap adatainak lekérése folyamatban...");
+  updateListBox("&#160;");
+  google.script.run.withSuccessHandler(updateMeetBox).listMyMeets(day);
+  
+}
+
+/*
+* kliensoldali hívás: szerveroldali függvény meghívása
+*/
+function listMeetAttendances(meetCode, conference_id){
+  updateListBox("A " + meetCode + " [" + conference_id + "] Meet adatainak lekérése folyamatban...");
+  google.script.run.withSuccessHandler(updateListBox).checkMeet(meetCode, conference_id);
+  
+}
+
+/*
+* Szerveroldali visszahívás: Adatok frissítése a kliensoldalon
+*/
+function updateMeetBox(responseContent) {
+  var div = document.getElementById('meetBox');
+  div.innerHTML = responseContent;
+  showMsg("&#160;");
+}
+
+/*
+* Szerveroldali visszahívás: Adatok frissítése a kliensoldalon
+*/
+function updateListBox(responseContent) {
+  var div = document.getElementById('listBox');
+  div.innerHTML = responseContent;
+  showMsg("&#160;");
+}
+</script>
+
+
+
+
+

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <?!= HtmlService.createHtmlOutputFromFile('css').getContent(); ?>
+  </head>
+  <body>
+    <div id="uiBox"><?!= dayForm(); ?></div>
+    <div id="meetBox"><?!= listMyMeets(new Date()); ?></div>
+    <div id="listBox">&#160;</div>
+    <div id="msgBox">&#160;</div>    
+    <?!= HtmlService.createHtmlOutputFromFile('js').getContent(); ?>
+  </body>
+</html>
+
+
+
+
